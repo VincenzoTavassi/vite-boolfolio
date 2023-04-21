@@ -33,7 +33,7 @@ export default {
           <strong>Tecnologie: </strong>
           <span
             v-for="technology in project.technologies"
-            v-html="technology.badge"
+            v-html="technology.badge + ' '"
           ></span>
         </p>
       </div>
