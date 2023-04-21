@@ -5,7 +5,7 @@ import ProjectList from "./components/ProjectList.vue";
 export default {
   data() {
     return {
-      title: "Hello world",
+      title: "Lista progetti",
     };
   },
 
@@ -18,7 +18,7 @@ export default {
     <AppNavbar></AppNavbar>
   </header>
   <main class="container">
-    <h1>{{ title }}</h1>
+    <h1 class="my-4">{{ title }}</h1>
     <ProjectList />
   </main>
 </template>
