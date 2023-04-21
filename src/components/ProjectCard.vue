@@ -3,9 +3,7 @@
 
 export default {
   data() {
-    return {
-      title: "Hello world",
-    };
+    return {};
   },
   props: { project: Object },
 
@@ -38,7 +36,6 @@ export default {
             v-html="technology.badge"
           ></span>
         </p>
-        <!-- <a href="{{route('guest.show', $project)}}" class="btn btn-dark mt-auto">Dettagli</a> -->
       </div>
     </div>
   </div>
