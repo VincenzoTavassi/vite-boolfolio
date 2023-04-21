@@ -30,6 +30,9 @@ export default {
 </script>
 
 <template>
+  <div class="d-flex justify-content-end">
+    <Pagination :pages="pages" @changePage="fetchProjects" />
+  </div>
   <div class="row row-cols-3">
     <ProjectCard v-for="project in projects" :project="project"></ProjectCard>
   </div>
