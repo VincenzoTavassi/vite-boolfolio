@@ -1,6 +1,5 @@
 <script>
 import AppNavbar from "./components/AppNavbar.vue";
-import ProjectList from "./components/ProjectList.vue";
 
 export default {
   data() {
@@ -9,7 +8,7 @@ export default {
     };
   },
 
-  components: { AppNavbar, ProjectList },
+  components: { AppNavbar },
 };
 </script>
 
@@ -18,8 +17,7 @@ export default {
     <AppNavbar></AppNavbar>
   </header>
   <main class="container">
-    <h1 class="my-4">{{ title }}</h1>
-    <ProjectList />
+    <RouterView></RouterView>
   </main>
 </template>
 
