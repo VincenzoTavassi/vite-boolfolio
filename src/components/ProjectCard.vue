@@ -6,10 +6,6 @@ export default {
     return {};
   },
   props: { project: Object },
-
-  created() {
-    console.log(this.project);
-  },
 };
 </script>
 
