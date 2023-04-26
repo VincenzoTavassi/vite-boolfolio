@@ -8,17 +8,23 @@ export default {
     return {
       projects: [],
       pages: [],
+      isLoading: false,
     };
   },
 
   methods: {
     fetchProjects(endpoint = null) {
-      console.log(endpoint);
+      this.isLoading = true;
       if (!endpoint) endpoint = "http://localhost:8000/api/projects";
-      axios.get(endpoint).then((response) => {
-        this.projects = response.data.projects.data;
-        this.pages = response.data.projects.links;
-      });
+      axios
+        .get(endpoint)
+        .then((response) => {
+          this.projects = response.data.projects.data;
+          this.pages = response.data.projects.links;
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
     },
   },
   components: { ProjectCard, Pagination },
@@ -30,13 +36,16 @@ export default {
 </script>
 
 <template>
-  <div class="d-flex justify-content-end">
+  <AppLoader v-if="isLoading" />
+  <div v-else>
+    <div class="d-flex justify-content-end">
+      <Pagination :pages="pages" @changePage="fetchProjects" />
+    </div>
+    <div class="row row-cols-3">
+      <ProjectCard v-for="project in projects" :project="project"></ProjectCard>
+    </div>
     <Pagination :pages="pages" @changePage="fetchProjects" />
   </div>
-  <div class="row row-cols-3">
-    <ProjectCard v-for="project in projects" :project="project"></ProjectCard>
-  </div>
-  <Pagination :pages="pages" @changePage="fetchProjects" />
 </template>
 
 <style lang="scss" scoped></style>
