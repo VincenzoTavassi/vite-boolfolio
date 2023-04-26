@@ -6,6 +6,7 @@ export default {
     return {
       project: "",
       isLoading: false,
+      error: false,
     };
   },
   methods: {
@@ -14,8 +15,13 @@ export default {
       axios
         .get(`http://localhost:8000/api/projects/${this.$route.params.id}`)
         .then((response) => {
-          console.log(response.data);
           this.project = response.data;
+        })
+        .catch((err) => {
+          console.log(err);
+          this.error = err.code + " " + err.message;
+          if (err.response.request.status == 404)
+            this.$router.push({ name: "not-found" });
         })
         .finally(() => {
           this.isLoading = false;
@@ -30,6 +36,7 @@ export default {
 
 <template>
   <AppLoader v-if="isLoading" />
+  <div v-else-if="error" class="alert alert-danger my-5">{{ error }}</div>
   <div v-else>
     <div class="col my-2">
       <div class="card">
