@@ -36,6 +36,11 @@ export default {
             v-html="technology.badge + ' '"
           ></span>
         </p>
+        <RouterLink
+          class="btn btn-dark btn-sm mt-auto"
+          :to="{ name: 'project-details', params: { id: project.id } }"
+          >Dettagli</RouterLink
+        >
       </div>
     </div>
   </div>
