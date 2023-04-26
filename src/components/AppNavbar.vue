@@ -5,7 +5,9 @@ export default {};
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Portfolio</a>
+      <RouterLink class="navbar-brand" :to="{ name: 'home' }"
+        >Portfolio</RouterLink
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -19,7 +21,12 @@ export default {};
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <RouterLink
+            class="nav-link active"
+            aria-current="page"
+            :to="{ name: 'home' }"
+            >Home</RouterLink
+          >
         </div>
       </div>
     </div>
